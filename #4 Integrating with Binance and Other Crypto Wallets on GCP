@@ -3,6 +3,11 @@
 We will integrate with Binance and other crypto wallets on GCP to provide a seamless and secure experience for fans and artists. 
 Integrating with Binance and other crypto wallets on GCP is a crucial step in the music crowdfunding platform. 
 This integration will allow fans and artists to use their Binance wallets and other crypto wallets to support music projects on the platform, providing a seamless and secure experience. To integrate with Binance, we will use their API to receive and process payments. 
+
+Output: 
+After integrating with Binance, fans and artists will be able to use their Binance wallets to support music projects on our platform.
+
+
 Follow these steps to integrate with Binance:
 
 1. Sign up for a Binance account and obtain your API key and secret key. (or use your own account that you created before)

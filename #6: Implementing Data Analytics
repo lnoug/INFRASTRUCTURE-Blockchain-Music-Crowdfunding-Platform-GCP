@@ -1,0 +1,65 @@
+#6: Implementing Data Analytics
+To gain insights into music consumption habits, we will use Google Analytics to track user behavior on the music crowdfunding platform. 
+
+Output: After implementing data analytics, artists will be able to make informed decisions about their music projects based on insights into music consumption habits.
+
+
+
+# Use the following command to create a Google Analytics account:
+
+https://analytics.google.com/analytics/web/provision/#/provision/create
+
+Follow the instructions to set up a Google Analytics account and create a new property for the music crowdfunding platform.
+
+Integrate Google Analytics with the platform using the Google Analytics API:
+Enable the Google Analytics API in the GCP console.
+Create a service account and download the service account key.
+Grant the service account access to the Google Analytics property.
+Use the service account key to authenticate requests to the Google Analytics API.
+
+
+# The following code initializes the Google Analytics API using a service account key, defines the metrics and dimensions to query, and retrieves a report for the past 7 days.
+
+CODE:
+
+from google.oauth2.service_account import Credentials
+from googleapiclient.discovery import build
+
+SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
+KEY_FILE_LOCATION = "<path_to_key_file>"
+VIEW_ID = "<your_view_id>"
+
+def initialize_analyticsreporting():
+    credentials = Credentials.from_service_account_file(
+        KEY_FILE_LOCATION, scopes=SCOPES
+    )
+
+    analytics = build("analyticsreporting", "v4", credentials=credentials)
+
+    return analytics
+
+def get_report(analytics, start_date, end_date):
+    metrics = [{"expression": "ga:sessions"}]
+    dimensions = [{"name": "ga:pagePath"}]
+    date_range = {"start_date": start_date, "end_date": end_date}
+
+    return (
+        analytics.reports()
+        .batchGet(
+            body={
+                "reportRequests": [
+                    {
+                        "viewId": VIEW_ID,
+                        "dateRanges": [date_range],
+                        "metrics": metrics,
+                        "dimensions": dimensions,
+                    }
+                ]
+            }
+        )
+        .execute()
+    )
+
+analytics = initialize_analyticsreporting()
+report = get_report(analytics, "7daysAgo", "today")
+print(report)

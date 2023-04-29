@@ -1,0 +1,31 @@
+#7 Ensuring Security
+To ensure security, we will use encryption and secure servers to protect user data and prevent unauthorized access. 
+Output: 
+After ensuring security, user data will be protected and unauthorized access will be prevented.
+
+
+Here are the steps:
+
+1. Use the following command to create an SSL certificate:
+
+gcloud compute ssl-certificates create <certificate-name> \
+--certificate <certificate-file> \
+--private-key <key-file>
+
+
+Replace <certificate-name>, <certificate-file>, and <key-file> with actual values.
+
+2. Configure your web server to use HTTPS and the SSL certificate.
+
+Here is an example Nginx configuration file for using HTTPS:
+
+
+server {
+  listen 443 ssl;
+  server_name example.com;
+  ssl_certificate /path/to/cert;
+  ssl_certificate_key /path/to/key;
+  location / {
+    # handle requests here
+  }
+}

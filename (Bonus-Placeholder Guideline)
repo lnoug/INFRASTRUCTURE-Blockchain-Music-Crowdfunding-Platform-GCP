@@ -1,0 +1,26 @@
+To replace the placeholders in step 4, follow these guidelines:
+
+1.Replace <your_api_key> and <your_api_secret> with your actual API key and secret key provided by Binance.
+2.Replace <coin_name> with the name of the cryptocurrency that you want to receive payments in.
+3.Replace <symbol> with the trading symbol for the cryptocurrency that you want to buy or sell.
+4.Replace <quantity> with the quantity of the cryptocurrency that you want to buy or sell.
+
+For example, if your API key is 1234abcd and your API secret is 5678efgh, and you want to receive payments in Bitcoin, buy 0.001 BTC, and the trading symbol for BTC is BTCUSDT, you would replace the placeholders in the code as follows:
+
+CODE:
+
+import binance
+
+client = binance.Client(api_key='1234abcd', api_secret='5678efgh')
+
+payment_info = client.get_deposit_history(coin='BTC')
+
+order = client.create_order(
+    symbol='BTCUSDT',
+    side='BUY',
+    type='MARKET',
+    quantity=0.001
+)
+
+
+Note that the actual values may differ depending on your specific use case, so make sure to replace the placeholders with the appropriate values for your situation.

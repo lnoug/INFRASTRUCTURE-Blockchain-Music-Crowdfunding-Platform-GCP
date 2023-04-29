@@ -1,0 +1,67 @@
+#8 Implementing a Subscription Model
+To implement a subscription model, we will use the Django framework to create a subscription model and provide users with access to exclusive content and features. 
+Output: After implementing a subscription model, users will have the option to subscribe to the platform on a monthly or yearly basis, providing them with access to exclusive content and features.
+
+Here are the steps:
+1. Use the following command to install the Django framework:
+
+pip install Django
+
+2. Define a model for subscriptions in Django's models.py file:
+
+from django.db import models
+from django.contrib.auth.models import User
+
+class Subscription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    plan = models.CharField(max_length=255)
+    start_date = models.DateTimeField(auto_now_add=True)
+    end_date = models.DateTimeField()
+    
+
+3. Define a view for subscribing users in Django's views.py file:
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from .models import Subscription
+
+@login_required
+def subscribe(request):
+    if request.method == 'POST':
+        plan = request.POST.get('plan')
+        end_date = timezone.now() + timezone.timedelta(days=30)
+        subscription = Subscription(user=request.user, plan=plan, end_date=end_date)
+        subscription.save()
+        return redirect('/dashboard')
+    return render(request, 'subscribe.html')
+    
+    
+4. Define a URL pattern for the subscribe view in Django's urls.py file:
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('subscribe/', views.subscribe, name='subscribe'),
+]
+
+
+5. Create a template for the subscribe view in Django's templates directory:
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <label for="plan">Choose a plan:</label>
+    <select id="plan" name="plan">
+      <option value="basic">Basic</option>
+      <option value="premium">Premium</option>
+    </select>
+    <button type="submit">Subscribe</button>
+  </form>
+{% endblock %}
+
+

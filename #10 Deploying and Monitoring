@@ -19,7 +19,20 @@ steps:
   args: ['apply', '-f', 'k8s/']
   
   
-Replace <image_name> with the name of your Docker image and k8s/ with the path to your Kubernetes deployment files.
+Replace <image_name> with the name of your Docker image and k8s/ with the path to your Kubernetes deployment files. (For Kubernetes and Docker img check my "#10 (Bonus)" file)
 
 
 2. Use a monitoring tool like Stackdriver to monitor the application for performance issues and errors.
+
+Use Stackdriver to monitor your Kubernetes deployment and application.
+To monitor your Kubernetes deployment with Stackdriver, you can follow these general steps:
+
+Install the Stackdriver agent: Install the Stackdriver agent on your Kubernetes nodes to collect metrics and logs from your application and infrastructure.
+
+    Configure Stackdriver Kubernetes Engine Monitoring: Enable Stackdriver Kubernetes Engine Monitoring to collect additional metrics and metadata about your Kubernetes deployment.
+    
+        Create a Stackdriver dashboard: Use the Stackdriver dashboard editor to create a custom dashboard that displays the metrics and logs you want to monitor. You can add charts, tables, and other widgets to present the data in a meaningful way.
+        
+                Set up alerts and notifications: Configure Stackdriver to send alerts and notifications when certain thresholds are exceeded or when specific events occur. You can receive alerts via email, SMS, or other channels.
+                
+By monitoring your Kubernetes deployment and application with Stackdriver, you can identify issues early, troubleshoot problems quickly, and optimize performance.

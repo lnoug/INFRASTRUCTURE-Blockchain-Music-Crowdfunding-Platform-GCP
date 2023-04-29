@@ -1,0 +1,26 @@
+#2: Creating a Virtual Machine Instance
+We will create a virtual machine instance to host our application. Follow these steps to create a virtual machine instance:
+Use the following command to create a virtual machine instance:
+
+CODE:
+gcloud compute instances create <instance-name> \
+--zone <zone> \
+--machine-type <machine-type> \
+--image-family <image-family> \
+--image-project <image-project> \
+--boot-disk-size <boot-disk-size>
+
+
+Replace the placeholders with actual values. 
+For example:
+
+gcloud compute instances create music-crowdfunding \
+--zone us-central1-a \
+--machine-type n1-standard-2 \
+--image-family ubuntu-1804-lts \
+--image-project ubuntu-os-cloud \
+--boot-disk-size 20GB
+
+
+Output:
+After running this command, a virtual machine instance will be created, and we will get a response with details like the instance name, machine type, zone, and IP address.

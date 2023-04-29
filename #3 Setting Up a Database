@@ -1,0 +1,23 @@
+ #3 Setting Up a Database
+ We will use a database to store music project information. Follow these steps to set up a database:
+ 
+ Use the following command to create a Cloud SQL instance:
+ 
+ gcloud sql instances create <instance-name> \
+--database-version <database-version> \
+--region <region> \
+--tier <tier> \
+--authorized-networks <network>
+ 
+ Replace the placeholders with actual values.
+ For example:
+ 
+ gcloud sql instances create music-crowdfunding-db \
+--database-version MYSQL_5_7 \
+--region us-central1 \
+--tier db-f1-micro \
+--authorized-networks 0.0.0.0/0
+
+
+Output: 
+After running this command, a Cloud SQL instance will be created, and we will get a response with details like the instance name, database version, region, and IP address.

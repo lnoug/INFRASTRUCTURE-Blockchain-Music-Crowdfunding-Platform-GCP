@@ -1,0 +1,25 @@
+#10 Deploying and Monitoring
+
+To deploy and monitor the platform, we will use a continuous integration and deployment tool to automate the deployment process and use a monitoring tool to monitor the application for performance issues and errors. 
+Output:
+After deploying and monitoring, the platform will be fully functional and ready to provide a music crowdfunding experience for fans and artists.
+
+Here are the steps:
+1. Use a CI/CD tool like Cloud Build to automate the deployment process.
+
+An example Cloud Build configuration file for deploying the platform using Docker:
+
+
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/<image_name>', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/<image_name>']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'k8s/']
+  
+  
+Replace <image_name> with the name of your Docker image and k8s/ with the path to your Kubernetes deployment files.
+
+
+2. Use a monitoring tool like Stackdriver to monitor the application for performance issues and errors.

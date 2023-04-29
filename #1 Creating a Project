@@ -1,0 +1,10 @@
+#1 Creating a Project
+To create a new project on GCP, we need to follow these steps:
+1. Log in to the GCP console and click on the "Select a project" dropdown on the top navigation bar.
+2. Click on the "New Project" button and enter a name for your project.
+3. Choose a billing account and click on the "Create" button.
+
+Output: After creating a project, we will get a Project ID, which we will use throughout this infrastructure.
+
+CODE:
+gcloud projects create <project-name> --set-as-default

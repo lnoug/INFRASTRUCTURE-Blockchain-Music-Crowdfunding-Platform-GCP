@@ -19,5 +19,5 @@ We will create a music crowdfunding platform that allows fans to support their f
 
 #SUMMARY
 
-Summary:
+
 We created a music crowdfunding platform that allows fans to support their favorite artists and help fund their music projects. We integrated with Binance and other crypto wallets on GCP to provide a seamless and secure experience, used data analytics to gain insights into music consumption habits, and prioritized security by using encryption and secure servers. We generated revenue through transaction fees and partnerships with music-related companies and used a CI/CD tool and monitoring tool to deploy and monitor the platform.
